@@ -31,7 +31,7 @@ calcoloPreventivo.addEventListener(`click`,function(event){
         return null;
     }
     
-
+    //CAMPO COMMENTI//
     const campoRichiesta = document.getElementById(`requestWork`).value;
 
     //CONTROLLO DELLA PRIVACY//
@@ -40,6 +40,8 @@ calcoloPreventivo.addEventListener(`click`,function(event){
         alert("Devi accettare la Privacy Policy.");
         return null
     }
+
+    //CONTROLLO E ASSEGANZIONE PREZZI LAVORO SCELTO//
 
     function PrezzoOra(lavoro) {
         switch(lavoro) {
@@ -59,14 +61,15 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     const lavoroSelezionato = document.getElementById('lavoroSelezionato').value;
     const codicePromozionale = document.getElementById('discountCode').value
     const prezzoOrario = PrezzoOra(lavoroSelezionato);
+    
+    // VERIFICA PER CODICI SCONTO//
+    const codiciValidi = ['YHDNU32', 'JANJC63', 'PWKCN25', 'SJDPO96', 'POCIE24'];
 
     // CALCOLO SENZA SCONTO
     const oreLavoro = 10; // ORE DI LAVORO FISSE
     let prezzoFinale = prezzoOrario * oreLavoro;
 
-    // VERIFICA PER CODICI SCONTO//
-    const codiciValidi = ['YHDNU32', 'JANJC63', 'PWKCN25', 'SJDPO96', 'POCIE24'];
-
+    //CALCOLCO CON CODICI//
     if (codiciValidi.includes(codicePromozionale)) {
         prezzoFinale = prezzoFinale * 0.75
         alert('Codice promozionale valido! Sconto del 25% applicato.');
