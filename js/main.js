@@ -8,16 +8,22 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     //CREZIONE DELLE VARIABILI AL CLICK//
 
     //CONTROLLO NOME UTENTE//
-    const nomeUtente = document.getElementById("nameInput").value;
-    if (nomeUtente.trim() === ``) {
-        alert(`Inserisci il tuo nome`)
+    const nomeUtente = document.getElementById("nameInput").value.trim();
+    if ((nomeUtente.length <= 1) || (!isNaN(nomeUtente))) {
+        nameInput.classList.add(`is-invalid`)
+        return null
+    } else {
+        nameInput.classList.add(`is-valid`)
     }
 
     //CONTROLLO COGNOME UTENTE//
-    const cognonomeUtente = document.getElementById(`surnameInput`).value
-    if (cognonomeUtente.trim() === ``) {
-        alert(`Inserisci il tuo cognome`)
-    };
+    const cognonomeUtente = document.getElementById(`surnameInput`).value.trim();
+    if ((cognonomeUtente.length <=1) || (!isNaN(cognonomeUtente))) {
+        surnameInput.classList.add(`is-invalid`)
+        return null
+    } else {
+        surnameInput.classList.add(`is-valid`)
+    }
 
     //CONTROLLO EMAIL//
     const emailUtente = document.getElementById(`emailInput`).value;
@@ -26,19 +32,28 @@ calcoloPreventivo.addEventListener(`click`,function(event){
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailPattern.test(email);
     }
+
     if (!validEmail(emailUtente)) {
-        alert("Per favore inserisci un'email valida, ex: mariobianchi@provider.com");
+        emailInput.classList.add(`is-invalid`)
         return null;
+    } else {
+        emailInput.classList.add(`is-valid`)
     }
     
     //CAMPO COMMENTI//
-    const campoRichiesta = document.getElementById(`requestWork`).value;
+    const campoRichiesta = document.getElementById(`requestWork`).value.trim();
+    if (campoRichiesta.length >= 10) {
+        requestWork.classList.add(`is-valid`)
+    }
+
 
     //CONTROLLO DELLA PRIVACY//
     const inputPrivacy = document.getElementById(`checkPrivacy`);
     if (!inputPrivacy.checked) {
-        alert("Devi accettare la Privacy Policy.");
+        checkPrivacy.classList.add(`is-invalid`)
         return null
+    } else {
+        checkPrivacy.classList.add(`is-valid`)
     }
 
     //CONTROLLO E ASSEGANZIONE PREZZI LAVORO SCELTO//
@@ -46,20 +61,23 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     function PrezzoOra(lavoro) {
         switch(lavoro) {
             case '1': // SVILUPPO BACKEND
+                selectWork.classList.add(`is-valid`)
                 return 20.50;
             case '2': // SVILUPPO FRONTEND
+                selectWork.classList.add(`is-valid`)
                 return 15.30;
             case '3': // ANALISI PROGETTUALE
+                selectWork.classList.add(`is-valid`)
                 return 33.60;
             default:
-                alert(`Seleziona un lavoro disponibile`)
+                selectWork.classList.add(`is-invalid`)
                 return null; // NESSUN LAVORO SELEZIONATO
         }
     }
 
 
-    const lavoroSelezionato = document.getElementById('lavoroSelezionato').value;
-    const codicePromozionale = document.getElementById('discountCode').value
+    const lavoroSelezionato = document.getElementById('selectWork').value;
+    const codicePromozionale = document.getElementById('discountCode').value.trim();
     const prezzoOrario = PrezzoOra(lavoroSelezionato);
     
     // VERIFICA PER CODICI SCONTO//
@@ -72,11 +90,9 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     //CALCOLCO CON CODICI//
     if (codiciValidi.includes(codicePromozionale)) {
         prezzoFinale = prezzoFinale * 0.75
-        alert('Codice promozionale valido! Sconto del 25% applicato.');
-    } else if (codicePromozionale.trim() === ``) {
-        alert('Codice promozionale non inserito, nessuno sconto previsto');
+        discountCode.classList.add(`is-valid`)
     } else if (codicePromozionale != codiciValidi) {
-        alert(`Codice non valido, nessuno sconto previsto`)
+        discountCode.classList.add(`is-invalid`)
     }
 
     // MOSTRA IL PREZZO FINALE//
