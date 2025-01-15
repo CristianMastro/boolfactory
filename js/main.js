@@ -7,22 +7,27 @@ calcoloPreventivo.addEventListener(`click`,function(event){
 
     //CREZIONE DELLE VARIABILI AL CLICK//
 
+
     //CONTROLLO NOME UTENTE//
     const nomeUtente = document.getElementById("nameInput").value.trim();
     if ((nomeUtente.length <= 1) || (!isNaN(nomeUtente))) {
         nameInput.classList.add(`is-invalid`)
+        nameInput.classList.remove(`is-valid`)
         return null
     } else {
         nameInput.classList.add(`is-valid`)
+        nameInput.classList.remove(`is-invalid`)
     }
 
     //CONTROLLO COGNOME UTENTE//
     const cognonomeUtente = document.getElementById(`surnameInput`).value.trim();
     if ((cognonomeUtente.length <=1) || (!isNaN(cognonomeUtente))) {
         surnameInput.classList.add(`is-invalid`)
+        surnameInput.classList.remove(`is-valid`)
         return null
     } else {
         surnameInput.classList.add(`is-valid`)
+        surnameInput.classList.remove(`is-invalid`)
     }
 
     //CONTROLLO EMAIL//
@@ -35,15 +40,18 @@ calcoloPreventivo.addEventListener(`click`,function(event){
 
     if (!validEmail(emailUtente)) {
         emailInput.classList.add(`is-invalid`)
+        emailInput.classList.remove(`is-valid`)
         return null;
     } else {
         emailInput.classList.add(`is-valid`)
+        emailInput.classList.remove(`is-invalid`)
     }
     
     //CAMPO COMMENTI//
     const campoRichiesta = document.getElementById(`requestWork`).value.trim();
     if (campoRichiesta.length >= 10) {
         requestWork.classList.add(`is-valid`)
+        requestWork.classList.remove(`is-invalid`)
     }
 
 
@@ -51,9 +59,11 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     const inputPrivacy = document.getElementById(`checkPrivacy`);
     if (!inputPrivacy.checked) {
         checkPrivacy.classList.add(`is-invalid`)
+        checkPrivacy.classList.remove(`is-valid`)
         return null
     } else {
         checkPrivacy.classList.add(`is-valid`)
+        checkPrivacy.classList.remove(`is-invalid`)
     }
 
     //CONTROLLO E ASSEGANZIONE PREZZI LAVORO SCELTO//
@@ -85,14 +95,16 @@ calcoloPreventivo.addEventListener(`click`,function(event){
 
     // CALCOLO SENZA SCONTO
     const oreLavoro = 10; // ORE DI LAVORO FISSE
-    let prezzoFinale = prezzoOrario * oreLavoro;
+    const prezzoFinale = prezzoOrario * oreLavoro;
 
     //CALCOLCO CON CODICI//
     if (codiciValidi.includes(codicePromozionale)) {
         prezzoFinale = prezzoFinale * 0.75
         discountCode.classList.add(`is-valid`)
+        discountCode.classList.remove(`is-invalid`)
     } else if (codicePromozionale != codiciValidi) {
         discountCode.classList.add(`is-invalid`)
+        discountCode.classList.remove(`is-valid`)
     }
 
     // MOSTRA IL PREZZO FINALE//
