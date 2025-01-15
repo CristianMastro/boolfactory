@@ -2,6 +2,12 @@ const calcoloPreventivo = document.getElementById(`calcPreventivo`)
 
 const costoBiglietto = document.getElementById(`price`)
 
+function aggiungiClasse(input, addClass, removeClass) {
+    input.classList.add(addClass);
+    input.classList.remove(removeClass);
+}
+
+
 calcoloPreventivo.addEventListener(`click`,function(event){
     event.preventDefault()
 
@@ -11,23 +17,19 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     //CONTROLLO NOME UTENTE//
     const nomeUtente = document.getElementById("nameInput").value.trim();
     if ((nomeUtente.length <= 1) || (!isNaN(nomeUtente))) {
-        nameInput.classList.add(`is-invalid`)
-        nameInput.classList.remove(`is-valid`)
+        aggiungiClasse(nameInput, `is-invalid`, `is-valid`)
         return null
     } else {
-        nameInput.classList.add(`is-valid`)
-        nameInput.classList.remove(`is-invalid`)
+        aggiungiClasse(nameInput, `is-valid`, `is-invalid`)
     }
 
     //CONTROLLO COGNOME UTENTE//
     const cognonomeUtente = document.getElementById(`surnameInput`).value.trim();
     if ((cognonomeUtente.length <=1) || (!isNaN(cognonomeUtente))) {
-        surnameInput.classList.add(`is-invalid`)
-        surnameInput.classList.remove(`is-valid`)
+        aggiungiClasse(surnameInput, `is-invalid`, `is-valid`)
         return null
     } else {
-        surnameInput.classList.add(`is-valid`)
-        surnameInput.classList.remove(`is-invalid`)
+        aggiungiClasse(surnameInput, `is-valid`, `is-invalid`)
     }
 
     //CONTROLLO EMAIL//
@@ -39,31 +41,26 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     }
 
     if (!validEmail(emailUtente)) {
-        emailInput.classList.add(`is-invalid`)
-        emailInput.classList.remove(`is-valid`)
+        aggiungiClasse(emailInput, `is-invalid`, `is-valid`)
         return null;
     } else {
-        emailInput.classList.add(`is-valid`)
-        emailInput.classList.remove(`is-invalid`)
+        aggiungiClasse(emailInput, `is-valid`, `is-invalid`)
     }
     
     //CAMPO COMMENTI//
     const campoRichiesta = document.getElementById(`requestWork`).value.trim();
     if (campoRichiesta.length >= 10) {
-        requestWork.classList.add(`is-valid`)
-        requestWork.classList.remove(`is-invalid`)
+        aggiungiClasse(requestWork, `is-valid`, `is-invalid`)
     }
 
 
     //CONTROLLO DELLA PRIVACY//
     const inputPrivacy = document.getElementById(`checkPrivacy`);
     if (!inputPrivacy.checked) {
-        checkPrivacy.classList.add(`is-invalid`)
-        checkPrivacy.classList.remove(`is-valid`)
+        aggiungiClasse(checkPrivacy, `is-invalid`, `is-valid`)
         return null
     } else {
-        checkPrivacy.classList.add(`is-valid`)
-        checkPrivacy.classList.remove(`is-invalid`)
+        aggiungiClasse(checkPrivacy, `is-valid`, `is-invalid`)
     }
 
     //CONTROLLO E ASSEGANZIONE PREZZI LAVORO SCELTO//
@@ -100,11 +97,9 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     //CALCOLCO CON CODICI//
     if (codiciValidi.includes(codicePromozionale)) {
         prezzoFinale = prezzoFinale * 0.75
-        discountCode.classList.add(`is-valid`)
-        discountCode.classList.remove(`is-invalid`)
+        aggiungiClasse(discountCode, `is-invalid`, `is-valid`)
     } else if (codicePromozionale != codiciValidi) {
-        discountCode.classList.add(`is-invalid`)
-        discountCode.classList.remove(`is-valid`)
+        aggiungiClasse(discountCode, `is-valid`, `is-invalid`)
     }
 
     // MOSTRA IL PREZZO FINALE//
