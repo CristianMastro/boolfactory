@@ -105,7 +105,10 @@ calcoloPreventivo.addEventListener(`click`,function(event){
         aggiungiClasse(discountCode, `is-invalid`, `is-valid`)
     }
 
+    const numeroIntero = Math.floor(prezzoFinale)
+    const parteDecimale = prezzoFinale.toFixed(2).split(`.`)[1]
+
     // MOSTRA IL PREZZO FINALE//
     costoBiglietto.classList.remove('d-none');
-    costoBiglietto.textContent = `Prezzo finale \n €${prezzoFinale.toFixed(2)}`;
+    costoBiglietto.innerHTML = `<b>Prezzo finale<br>&nbsp;&nbsp;&nbsp;&nbsp;€${numeroIntero}</b>,${parteDecimale}`;
 });
