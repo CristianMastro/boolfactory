@@ -97,9 +97,9 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     //CALCOLCO CON CODICI//
     if (codiciValidi.includes(codicePromozionale)) {
         prezzoFinale = prezzoFinale * 0.75
-        aggiungiClasse(discountCode, `is-invalid`, `is-valid`)
-    } else if (codicePromozionale != codiciValidi) {
         aggiungiClasse(discountCode, `is-valid`, `is-invalid`)
+    } else if (codicePromozionale != codiciValidi) {
+        aggiungiClasse(discountCode, `is-invalid`, `is-valid`)
     }
 
     // MOSTRA IL PREZZO FINALE//
