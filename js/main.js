@@ -69,12 +69,15 @@ calcoloPreventivo.addEventListener(`click`,function(event){
         switch(lavoro) {
             case '1': // SVILUPPO BACKEND
                 selectWork.classList.add(`is-valid`)
+                selectWork.classList.remove(`is-invalid`)
                 return 20.50;
             case '2': // SVILUPPO FRONTEND
                 selectWork.classList.add(`is-valid`)
+                selectWork.classList.remove(`is-invalid`)
                 return 15.30;
             case '3': // ANALISI PROGETTUALE
                 selectWork.classList.add(`is-valid`)
+                selectWork.classList.remove(`is-invalid`)
                 return 33.60;
             default:
                 selectWork.classList.add(`is-invalid`)
@@ -104,5 +107,5 @@ calcoloPreventivo.addEventListener(`click`,function(event){
 
     // MOSTRA IL PREZZO FINALE//
     costoBiglietto.classList.remove('d-none');
-    costoBiglietto.textContent = `PREZZO FINALE: €${prezzoFinale.toFixed(2)}`;
+    costoBiglietto.textContent = `Prezzo finale \n €${prezzoFinale.toFixed(2)}`;
 });
