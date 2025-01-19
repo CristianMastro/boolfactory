@@ -3,27 +3,27 @@ const calcoloPreventivo = document.getElementById(`calcPreventivo`)
 const costoBiglietto = document.getElementById(`price`)
 
 //FUNZIONE PER AGGIUNGERE E RIMUOVERE CLASSI//
-
 function aggiungiClasse(input, addClass, removeClass) {
     input.classList.add(addClass);
     input.classList.remove(removeClass);
 }
 
-//FUNZIONE PER CONTROLLO NUMERI NELLA STRINGA//
-function contNumeri(nome) {
-    const controlloStringa = /\d/; 
-    return controlloStringa.test(nome);
-}
 
 calcoloPreventivo.addEventListener(`click`,function(event){
     event.preventDefault()
 
     //CREZIONE DELLE VARIABILI AL CLICK//
 
+    //FUNZIONE PER CONTROLLO NUMERI NELLA STRINGA//
+    function contNumeri(str) {
+    const controlloStringa = /\d/; 
+    return controlloStringa.test(str);
+    }
+
 
     //CONTROLLO NOME UTENTE//
     const nomeUtente = document.getElementById("nameInput").value.trim();
-    if ((nomeUtente.length <= 1) || (!isNaN(nomeUtente)) || (!contNumeri(nameInput))) {
+    if ((nomeUtente.length <= 1) || (!isNaN(nomeUtente)) || (contNumeri(nomeUtente))) {
         aggiungiClasse(nameInput, `is-invalid`, `is-valid`)
         return null
     } else {
@@ -31,8 +31,8 @@ calcoloPreventivo.addEventListener(`click`,function(event){
     }
 
     //CONTROLLO COGNOME UTENTE//
-    const cognonomeUtente = document.getElementById(`surnameInput`).value.trim();
-    if ((cognonomeUtente.length <=1) || (!isNaN(cognonomeUtente)) || (!contNumeri(surnameInput))) {
+    const cognomeUtente = document.getElementById(`surnameInput`).value.trim();
+    if ((cognomeUtente.length <=1) || (!isNaN(cognomeUtente)) || (contNumeri(cognomeUtente))) {
         aggiungiClasse(surnameInput, `is-invalid`, `is-valid`)
         return null
     } else {
