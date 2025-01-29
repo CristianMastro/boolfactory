@@ -16,7 +16,7 @@ calcoloPreventivo.addEventListener(`click`,function(event){
 
     //FUNZIONE PER CONTROLLO NUMERI NELLA STRINGA//
     function contNumeri(str) {
-    const controlloStringa = /\d/; 
+    const controlloStringa = /\d/; //carattere speciale che corrisponde a una cifra da 0 a 9//
     return controlloStringa.test(str);
     }
 
@@ -102,13 +102,17 @@ calcoloPreventivo.addEventListener(`click`,function(event){
 
     // CALCOLO SENZA SCONTO
     const oreLavoro = 10; // ORE DI LAVORO FISSE
-    const prezzoFinale = prezzoOrario * oreLavoro;
+    let prezzoFinale = prezzoOrario * oreLavoro;
+
+
 
     //CALCOLCO CON CODICI//
+
+
     if (codiciValidi.includes(codicePromozionale)) {
         prezzoFinale = prezzoFinale * 0.75
         aggiungiClasse(discountCode, `is-valid`, `is-invalid`)
-    } else if (codicePromozionale != codiciValidi) {
+    } else {
         aggiungiClasse(discountCode, `is-invalid`, `is-valid`)
     }
 
